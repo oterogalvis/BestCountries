@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" th:href="@{/app.css}"/>
+    <title>Best countries</title>
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1><a th:href="@{/}">Best countries of the world</a></h1>
+    </div>
+</header>
+<div class="container">
+    <div class="sort-menu">
+        <a th:href="@{/}">sort by position</a>
+        <a th:href="@{/by-name}">sort by name</a>
+        <a th:href="@{/by-population}">sort by population</a>
+    </div>
+</div>
+<div class="container">
+    <div th:each="country : ${countries}" class="country">
+        <a th:href="@{'/detail/' + ${country.position}}">
+            <img th:src="@{'flags/' + ${country.flag}}" th:alt="'Flag of ' + ${country.name}"/>
+            <h4 th:text="${country.name}"></h4>
+        </a>
+    </div>
+</div>
+<div class="container">
+    <div class="sort-menu">
+        <a href="https://www.usnews.com/news/best-countries/overall-full-list" target="_blank">
+            To see original article from U.S.News click here
+        </a>
+    </div>
+</div>
+</body>
+</html>
